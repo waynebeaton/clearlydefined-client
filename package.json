@@ -1,0 +1,26 @@
+{
+  "name": "clearlydefined-client",
+  "version": "1.0.0",
+  "description": "Electron application to search ClearlyDefined, edit definitions and contribute curations",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test \"test/*.test.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waynebeaton/clearlydefined-client"
+  },
+  "keywords": [
+    "clearlydefined",
+    "electron",
+    "curation",
+    "licensing"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "electron": "^44.5.0"
+  }
+}
