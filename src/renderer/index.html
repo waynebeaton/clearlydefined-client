@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:;"
+    />
+    <title>ClearlyDefined Client</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>ClearlyDefined Client</h1>
+      <div id="auth-panel">
+        <span id="auth-status">Not signed in</span>
+        <button id="sign-in-device">Sign in with GitHub</button>
+        <button id="sign-in-token">Use a token</button>
+        <button id="sign-out" hidden>Sign out</button>
+      </div>
+    </header>
+
+    <section id="token-form" hidden>
+      <label for="token-input">GitHub personal access token (needs the <code>public_repo</code> scope)</label>
+      <div class="row">
+        <input id="token-input" type="password" autocomplete="off" placeholder="ghp_..." />
+        <button id="token-save">Save</button>
+        <button id="token-cancel" class="secondary">Cancel</button>
+      </div>
+      <p id="token-hint" class="hint"></p>
+    </section>
+
+    <section id="device-flow" hidden>
+      <p>
+        Enter the code <strong id="device-code"></strong> at
+        <a id="device-url" href="#"></a> to finish signing in.
+      </p>
+    </section>
+
+    <main>
+      <section id="search-section">
+        <h2>1. Find a component</h2>
+        <div class="row">
+          <input id="search-input" type="search" placeholder="lodash, or npm/npmjs/-/lodash/4.17.21" />
+          <button id="search-button">Search</button>
+        </div>
+        <ul id="results" class="results"></ul>
+      </section>
+
+      <section id="definition-section" hidden>
+        <h2>2. Review and edit</h2>
+        <p id="definition-coordinates" class="coordinates"></p>
+        <form id="definition-form">
+          <label for="declaredLicense">Declared license (SPDX expression)</label>
+          <input id="declaredLicense" name="declaredLicense" type="text" />
+
+          <label for="releaseDate">Release date (YYYY-MM-DD)</label>
+          <input id="releaseDate" name="releaseDate" type="text" />
+
+          <label for="projectWebsite">Project website</label>
+          <input id="projectWebsite" name="projectWebsite" type="text" />
+
+          <label for="issueTracker">Issue tracker</label>
+          <input id="issueTracker" name="issueTracker" type="text" />
+
+          <fieldset>
+            <legend>Source location</legend>
+            <label for="source-type">Type</label>
+            <input id="source-type" name="type" type="text" />
+            <label for="source-provider">Provider</label>
+            <input id="source-provider" name="provider" type="text" />
+            <label for="source-namespace">Namespace</label>
+            <input id="source-namespace" name="namespace" type="text" />
+            <label for="source-name">Name</label>
+            <input id="source-name" name="name" type="text" />
+            <label for="source-revision">Revision</label>
+            <input id="source-revision" name="revision" type="text" />
+            <label for="source-url">URL</label>
+            <input id="source-url" name="url" type="text" />
+          </fieldset>
+        </form>
+      </section>
+
+      <section id="contribution-section" hidden>
+        <h2>3. Contribute the curation</h2>
+        <label for="contribution-type">Type</label>
+        <select id="contribution-type">
+          <option value="missing">Missing</option>
+          <option value="incorrect">Incorrect</option>
+          <option value="incomplete">Incomplete</option>
+          <option value="ambiguous">Ambiguous</option>
+          <option value="other" selected>Other</option>
+        </select>
+
+        <label for="contribution-summary">Summary</label>
+        <input id="contribution-summary" type="text" placeholder="Correct the declared license" />
+
+        <label for="contribution-details">Details</label>
+        <textarea id="contribution-details" rows="3"></textarea>
+
+        <label for="contribution-resolution">Resolution</label>
+        <textarea id="contribution-resolution" rows="3"></textarea>
+
+        <h3>Changes to contribute</h3>
+        <pre id="patch-preview">No changes yet.</pre>
+
+        <button id="submit-curation">Contribute curation</button>
+      </section>
+    </main>
+
+    <p id="message" role="status"></p>
+    <script src="renderer.js"></script>
+  </body>
+</html>
